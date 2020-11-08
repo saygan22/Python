@@ -5,12 +5,11 @@ for x in [string.ascii_uppercase]:
    for y in list(x):
        velkaP.append(y)
 
-print(velkaP)
 
 
 
 sifrovane = input("Napiste sifrovane")
-print("Это то, что вы только что ввели?", sifrovane)
+
 
 
 
