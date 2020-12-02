@@ -1,4 +1,3 @@
-
 print("Read the Crypt-file with Key-file")
 print("Please create the Crypt-file without empty lines and Key-file")
 with open("crypt.txt", "r") as file_crypt: something = file_crypt.read()
@@ -34,6 +33,3 @@ while p < len(key):
     print("Number of one_of_variant sifry" + '\t' + str(p))
     print("Key" + '\t' + one_of_variant)
     print('Decrypted message:' + '\t' + decrypt_list + "\n")
-
-
-
