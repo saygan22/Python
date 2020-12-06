@@ -1,7 +1,7 @@
-from fast import FASTAReader
+from fastaQ import FASTAQReader
 
 
-g = FASTAReader("FASTA.txt")
+g = FASTAQReader("data.fq")
 
 for i in g:
     print(i)
