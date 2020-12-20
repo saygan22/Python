@@ -29,11 +29,13 @@ while(g < height):
 
 
 
-
 for x in f.readlines():
 
      t = t + 1
      print(t)
      print(x)
-#
-# print(str.decode('utf-8'))
+
+
+
+img_array = numpy.asarray(f, dtype='uint8')
+print(img_array)
