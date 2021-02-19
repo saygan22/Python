@@ -1,6 +1,10 @@
 import numpy
 from PIL import Image
 
+# im_gray = numpy.array(Image.open('black_white.pnm').convert('1'), dtype='uint8')
+
+
+
 image = Image.open('volcano_PNG48.png')
 
 image.save('volcano.pnm')
@@ -14,6 +18,7 @@ img_black_white.show()
 weight, height = img_black_white.size
 print(weight)
 f = open('black_white.pnm', 'rb+')
+
 str = ''
 t = 0
 
@@ -21,13 +26,11 @@ pix = img_black_white.load()
 xb = bytearray()
 last_index = weight - 1
 
+
 g = 0
 while(g < height):
     print(bin(img_black_white.getpixel((last_index, g))))
-
     g = g + 1
-
-
 
 for x in f.readlines():
 
@@ -37,5 +40,24 @@ for x in f.readlines():
 
 
 
-img_array = numpy.asarray(f, dtype='uint8')
-print(img_array)
+
+text = input("Enter message to encode: ").lower()
+t2b = bin(int.from_bytes(text.encode(), 'big'))
+print(t2b)
+
+
+n = int(t2b, 2)
+b2t = n.to_bytes((n.bit_length() + 7) // 8, 'big').decode()
+print(b2t)
+
+
+
+
+
+
+
+
+
+
+
+

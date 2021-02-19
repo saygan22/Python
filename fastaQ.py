@@ -35,7 +35,8 @@ def FASTAQReader(file):
            count_line = count_line + 1
            break
        elif count_line == 2:
-           sekvence.append(line.rstrip())
+           for i in line:
+            sekvence.append(i)
            count_line = count_line + 1
            break
        elif count_line == 3:
@@ -48,4 +49,4 @@ def FASTAQReader(file):
            break
     if count_line == 5:
         count_line = count_line - 4
- return hlavicka,sekvence,komentar,kvalita_cteni
+ return sekvence
