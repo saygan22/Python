@@ -1,10 +1,7 @@
 import numpy
 from PIL import Image
 
-# im_gray = numpy.array(Image.open('black_white.pnm').convert('1'), dtype='uint8')
-
-
-
+# im_gray = np.array(Image.open('volcano.pnm').convert('1'), dtype='uint8')
 image = Image.open('volcano_PNG48.png')
 
 image.save('volcano.pnm')
@@ -17,14 +14,16 @@ img_black_white = Image.open('black_white.pnm')
 img_black_white.show()
 weight, height = img_black_white.size
 print(weight)
-f = open('black_white.pnm', 'rb+')
+print(height)
 
-str = ''
+
+
 t = 0
 
 pix = img_black_white.load()
-xb = bytearray()
+
 last_index = weight - 1
+print(type(bin(img_black_white.getpixel((last_index, 1)))))
 
 
 g = 0
@@ -32,11 +31,14 @@ while(g < height):
     print(bin(img_black_white.getpixel((last_index, g))))
     g = g + 1
 
-for x in f.readlines():
+# f = open('black_white.pnm', 'rb+')
+# for x in f.readlines():
+#
+#      t = t + 1
+#      print(t)
+#      print(x)
 
-     t = t + 1
-     print(t)
-     print(x)
+
 
 
 
