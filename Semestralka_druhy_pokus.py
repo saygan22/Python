@@ -4,11 +4,12 @@ from PIL import Image
 print(np.sctypeDict) # разновидности елементов массива
 im = Image.open('zhivotnie_grach.gif') # создаем елемент pillow для превращения
 im  = im.convert('1') # делаем черно-белым
+im.show()
 print(type(im))
 pixels = np.array(im, dtype='int8')
 weight, height = im.size
 
-np.set_printoptions(threshold=100000000, linewidth=203)
+np.set_printoptions(threshold=100000000, linewidth=2666)
 
 print(pixels.reshape(weight, height)) #  вывод массива
 print(weight)
@@ -43,10 +44,7 @@ print(encode(text))
 last_pixels = np.zeros((height, a), dtype=np.int8) #создаем пустой массив нулей заданой формы
 
 
-# for s in last_pixels:
-#     for f in encode(text):
-#
-#       print(s)
+
 list_of_encoded = []
 for f in encode(text):
    list_of_encoded.append(int(f)) # создаем список чисел в виде кода по одной цифре
@@ -58,16 +56,31 @@ print(b)
 
 b.resize((height, a), refcheck=False) # создаем недостающую полосу изображения, лишнее заполняем нулями
 print(b)
-
-encoded_im = np.hstack([pixels, b]) # соединяем основную и закодированную части
-
-
-print(encoded_im.reshape(weight + a, height))
-print(weight + a, height)
-
-img = Image.fromarray(encoded_im) #  переводим назад в изображение
-img.show()
+print(pixels)
+encoded_im = np.column_stack([pixels, b]) # соединяем основную и закодированную части
 
 
+print(encoded_im)
+print(encoded_im.shape)
 
 
+# img = Image.fromarray((encoded_im * 255).astype('uint8'), mode='L').save('pic2.pnm') #  переводим назад в изображение
+# pic = Image.open('pic2.pnm')
+# pic.show() # вариант PNM P5, справа видна закодированная полоса
+
+
+img2 = Image.fromarray(encoded_im, mode='L')
+img2.save('pic6.pnm')
+
+img3 = Image.open('pic6.pnm')
+img4 = img3.convert("1")
+img4.save('pic7.pnm')
+img4.show() # вариант PNM P4 но выводит черное изображение
+
+
+t = 0
+f = open('pic7.pnm', 'rb+')
+for x in f.readlines(): # прямое чтение файла
+     t = t + 1
+     print(t)
+     print(x)
