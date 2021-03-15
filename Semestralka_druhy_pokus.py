@@ -52,7 +52,7 @@ if choose_a_function == str(1):
     name_of_encoded_file = input('Enter name of encoded image,without formatu\n')
     img = Image.fromarray((encoded_im * 255).astype('uint8'), mode='L').save(
         name_of_encoded_file + '.pnm')  # přeložit zpět do obrázku
-    pic = Image.open('pic2.pnm')
+    pic = Image.open(name_of_encoded_file + '.pnm')
     pic.show()  # Varianta PNM P5, kódovaný proužek je vidět vpravo
 
 elif choose_a_function == str(2):
@@ -79,24 +79,18 @@ elif choose_a_function == str(2):
                         break
     print('Decoded message is\n', decoded_message)
 
-    # t = 0
-    # f = open('pic2.pnm', 'rb+')
-    # for x in f.readlines():  # přímé čtení souboru
-    #     t = t + 1
-    #     print('Number of line', t)
-    #     print(x)
 else: print('Error,please try again')
 
 
-# img2 = Image.fromarray(encoded_im, mode='L')
+# img2 = Image.fromarray(encoded_im, mode='L') # s největší pravděpodobností je problém v metodě fromarray
 # img2.save('pic6.pnm')
 # img3 = Image.open('pic6.pnm').convert("1")
 # img3.save('pic7.pnm')
-# img3.show() # вариант PNM P4 но выводит черное изображение
+# img3.show() # Varianta PNM P4, ale zobrazuje černý obrázek
 
 # t = 0
 # f = open('pic7.pnm', 'rb+')
-# for x in f.readlines(): # прямое чтение файла
+# for x in f.readlines(): # přímé čtení souboru
 #      t = t + 1
 #      print('Number of line',t)
 #      print(x)
